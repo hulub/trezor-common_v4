@@ -64,6 +64,12 @@ enum MessageType {
 	MessageType_SignIdentity = 53 [(wire_in) = true];
 	MessageType_SignedIdentity = 54 [(wire_out) = true];
 	MessageType_GetFeatures = 55 [(wire_in) = true];
+	
+	/* Ring Sign Messages */
+	MessageType_RingSignMessage = 60 [(wire_in) = true];
+	MessageType_MessageRingSignature = 61 [(wire_out) = true];
+	
+	/* Debug Messages */
 	MessageType_DebugLinkDecision = 100 [(wire_debug_in) = true];
 	MessageType_DebugLinkGetState = 101 [(wire_debug_in) = true];
 	MessageType_DebugLinkState = 102 [(wire_debug_out) = true];
@@ -408,6 +414,30 @@ message VerifyMessage {
  * @prev SignMessage
  */
 message MessageSignature {
+	optional string address = 1;				// address used to sign the message
+	optional bytes signature = 2;				// signature of the message
+}
+
+///////////////////////////////////
+// Message ring signing messages //
+///////////////////////////////////
+
+/**
+ * Request: Ask device to ring sign message
+ * @next MessageRingSignature
+ * @next Failure
+ */
+message RingSignMessage {
+	repeated uint32 address_n = 1;				// BIP-32 path to derive the key from master node
+	required bytes message = 2;				// message to be signed
+	optional string coin_name = 3 [default='Bitcoin'];	// coin to use for signing
+}
+
+/**
+ * Response: Ring Signed message
+ * @prev RingSignMessage
+ */
+message MessageRingSignature {
 	optional string address = 1;				// address used to sign the message
 	optional bytes signature = 2;				// signature of the message
 }
