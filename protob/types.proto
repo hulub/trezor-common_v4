@@ -239,3 +239,8 @@ message BigNumType {
 message RingSignPublicKeyType {
 	required bytes public_key = 1;			// bytes of the public key
 }
+
+message ECPointType {
+	required BigNumType x = 1;			// x coordinate
+	required BigNumType y = 2;			// y coordinate
+}
