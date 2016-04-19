@@ -232,6 +232,10 @@ message IdentityType {
  * Structure representing bignum data
  * @used_in Ring Sign Message
  */
-message BigNum {
+message BigNumType {
 	required bytes value = 1;			// bytes of the big num
+}
+
+message RingSignPublicKeyType {
+	required bytes public_key = 1;			// bytes of the public key
 }

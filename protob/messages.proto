@@ -428,7 +428,7 @@ message MessageSignature {
  * @next Failure
  */
 message RingSignMessage {
-	repeated bytes L = 1;
+	repeated RingSignPublicKeyType L = 1;
 	required uint32 n = 2;
 	required uint32 pi = 3;
 	required bytes message = 4;
@@ -439,10 +439,10 @@ message RingSignMessage {
  * @prev RingSignMessage
  */
 message MessageRingSignature {
-	required bytes c = 1;
-	repeated bytes s = 2;
+	required BigNumType c = 1;
+	repeated BigNumType s = 2;
 	required uint32 n = 3;
-	required bytes yt = 4;
+	required BigNumType yt = 4;
 }
 
 ///////////////////////////
