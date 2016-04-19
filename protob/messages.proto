@@ -66,10 +66,8 @@ enum MessageType {
 	MessageType_GetFeatures = 55 [(wire_in) = true];
 	
 	/* Ring Sign Messages */
-	/*
 	MessageType_RingSignMessage = 60 [(wire_in) = true];
 	MessageType_MessageRingSignature = 61 [(wire_out) = true];
-	*/
 	
 	/* Debug Messages */
 	MessageType_DebugLinkDecision = 100 [(wire_debug_in) = true];
@@ -430,27 +428,23 @@ message MessageSignature {
  * @next Failure
  */
 
-/*
 message RingSignMessage {
 	repeated RingSignPublicKeyType L = 1;
 	required uint32 n = 2;
 	required uint32 pi = 3;
 	required bytes message = 4;
 }
-*/
 
 /**
  * Response: Ring Signed message
  * @prev RingSignMessage
  */
-/*
 message MessageRingSignature {
 	required BigNumType c = 1;
 	repeated BigNumType s = 2;
 	required uint32 n = 3;
 	required ECPointType Yt = 4;
 }
-*/
 
 ///////////////////////////
 // Encryption/decryption //

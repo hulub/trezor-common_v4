@@ -233,7 +233,6 @@ message IdentityType {
  * @used_in Ring Sign Message
  */
 
-/*
 message BigNumType {
 	required bytes value = 1;			// bytes of the big num
 }
@@ -246,4 +245,3 @@ message ECPointType {
 	required BigNumType x = 1;			// x coordinate
 	required BigNumType y = 2;			// y coordinate
 }
-*/
