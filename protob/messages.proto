@@ -69,6 +69,10 @@ enum MessageType {
 	MessageType_RingSignMessage = 60 [(wire_in) = true];
 	MessageType_MessageRingSignature = 61 [(wire_out) = true];
 	
+	/* Get Public Key 65 */
+	MessageType_GetPublicKey65 = 62 [(wire_in) = true];
+	MessageType_PublicKey65 = 63 [(wire_out) = true];
+	
 	/* Debug Messages */
 	MessageType_DebugLinkDecision = 100 [(wire_debug_in) = true];
 	MessageType_DebugLinkGetState = 101 [(wire_debug_in) = true];
@@ -445,6 +449,27 @@ message MessageRingSignature {
 	required uint32 n = 3;
 	required bytes YtDotX = 4;
 	required bytes YtDotY = 5;
+}
+
+///////////////////////
+// Get Public Key 65 //
+///////////////////////
+
+/**
+ * Request: Ask device to return public key 65
+ * @next PublicKey65
+ */
+ 
+message GetPublicKey65 {
+}
+
+/**
+ * Response: Public Key 65 message
+ * @prev RingSignMessage
+ */
+
+message PublicKey65 {
+	required bytes publicKey = 1;
 }
 
 ///////////////////////////
